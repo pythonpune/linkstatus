@@ -21,7 +21,7 @@ def link_status(link):
         status_code = requests.get(link, timeout=3).status_code
     except requests.exceptions.SSLError:
         status_code = requests.get(link, verify=False, timeout=3).status_code
-    except Exception:  #noqa
+    except Exception:  # noqa
         # TODO: include exception in logging
         status_code = None
         pass
@@ -50,7 +50,7 @@ def main(source):
         links = parse_file(f)
 
         if links:
-            click.echo(click.style("File: {}".format(f), bg='blue', fg='white'))
+            click.echo(click.style("File: {}".format(f), bg="blue", fg="white"))
 
             for link in links:
                 for url in link.urls:
@@ -66,6 +66,6 @@ def main(source):
                         "{icon} L{ln} : {l}".format(
                             icon=click.style(icon, fg=fg, bold=True),
                             ln=link.line,
-                            l=click.style(url, fg=fg)
+                            l=click.style(url, fg=fg),
                         )
                     )
