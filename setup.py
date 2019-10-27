@@ -5,7 +5,7 @@ from setuptools import setup
 with open("README.md") as readme_file:
     readme = readme_file.read()
 
-install_requirements = ["markdown"]
+install_requirements = ["click", "markdown"]
 
 setup_requirements = ["setuptools_scm"]
 
@@ -20,7 +20,7 @@ setup(
     ],
     python_requires=">=3.5",
     description="Simple text/ markdown links status checker",
-    entry_points={"console_scripts": ["linkstatus=linkstatus:main"]},
+    entry_points={"console_scripts": ["linkstatus=src.linkstatus:main"]},
     install_requires=install_requirements,
     long_description=readme,
     long_description_content_type="text/markdown",
