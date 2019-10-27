@@ -9,4 +9,3 @@
     <a href="https://pepy.tech/project/linkstatus"><img alt="Downloads" src="https://pepy.tech/badge/linkstatus"></a>
     <a href="https://pypi.org/project/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
-

@@ -1,8 +1,8 @@
-import os
 import glob
+import os
 
-import requests
 import click
+import requests
 
 from linkstatus.parser import parse_file
 
@@ -71,10 +71,10 @@ def main(source):
                         EXIT_STATUS = 1
 
                     click.echo(
-                        "{icon} L{ln} : {l}".format(
+                        "{icon} L{ln} : {url}".format(
                             icon=click.style(icon, fg=fg, bold=True),
                             ln=link.line,
-                            l=click.style(url, fg=fg),
+                            url=click.style(url, fg=fg),
                         )
                     )
 
