@@ -4,7 +4,7 @@ import glob
 import requests
 import click
 
-from src.parser import parse_file
+from linkstatus.parser import parse_file
 
 EXIT_STATUS = 0
 
