@@ -22,8 +22,8 @@ def parse_line(string):
         html_format = markdown.markdown(string, output_format='html')
         links = re.findall(REGULAR_EXP, html_format)
 
-        # TODO: Improve regex to remove this workaround for trailing </p>
-        links = [l.replace('</p>', '') if '</p>' in l else l for l in links]
+        # TODO: Improve regex to remove this workaround for trailing </p> or </li>
+        links = [l.replace('</p>', '').replace('</li>', "") for l in links]
         return links
     else:
         return []

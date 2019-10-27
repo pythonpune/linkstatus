@@ -5,7 +5,7 @@ from setuptools import setup
 with open("README.md") as readme_file:
     readme = readme_file.read()
 
-install_requirements = ["click", "markdown"]
+install_requirements = ["click", "markdown", "requests"]
 
 setup_requirements = ["setuptools_scm"]
 
@@ -17,6 +17,9 @@ setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        'Intended Audience :: End Users/Desktop',
+        'Intended Audience :: Developers',
+        'Environment :: Console',
     ],
     python_requires=">=3.5",
     description="Simple text/ markdown links status checker",
@@ -27,7 +30,7 @@ setup(
     include_package_data=True,
     setup_requires=setup_requirements,
     use_scm_version=True,
-    keywords="linkstatus, linkchecker, link-checker, markdown, text, linklint",
+    keywords=["linkstatus", "linkchecker", "link-checker", "markdown", "text", "linklint", "link"],
     name="linkstatus",
     packages=find_packages(include=["linkstatus"]),
     url="https://github.com/digitronik/linkstatus",

@@ -1,9 +1,7 @@
 import os
 import glob
-from urllib import request
-from urllib.error import URLError
-from urllib.error import HTTPError
 
+import requests
 import click
 
 from src.parser import parse_file
@@ -16,15 +14,19 @@ def link_status(link):
         link: link to check status
 
     Returns:
-        tuple of status (bool) and status code/ reason
+        tuple of status (bool) and status code
     """
+
     try:
-        connection = request.urlopen(link)
-        return True, connection.code
-    except HTTPError as e:
-        return False, e.code
-    except URLError as e:
-        return False, e.reason
+        status_code = requests.get(link, timeout=3).status_code
+    except requests.exceptions.SSLError:
+        status_code = requests.get(link, verify=False, timeout=3).status_code
+    except Exception:  #noqa
+        # TODO: include exception in logging
+        status_code = None
+        pass
+
+    return status_code == 200, status_code
 
 
 def all_files(source):
@@ -54,9 +56,16 @@ def main(source):
                 for url in link.urls:
                     status, code = link_status(url)
 
-                    fg = "green" if status else "red"
-                    _status = "UP" if status else "DOWN"
-
+                    if status:
+                        fg = "green"
+                        icon = "✓"
+                    else:
+                        fg = "red"
+                        icon = "✗"
                     click.echo(
-                        "L{}: {} ==> {}".format(link.line, url, click.style(_status, fg=fg))
+                        "{icon} L{ln} : {l}".format(
+                            icon=click.style(icon, fg=fg, bold=True),
+                            ln=link.line,
+                            l=click.style(url, fg=fg)
+                        )
                     )
