@@ -6,6 +6,8 @@ import click
 
 from src.parser import parse_file
 
+EXIT_STATUS = 0
+
 
 def link_status(link):
     """Check link status
@@ -18,9 +20,9 @@ def link_status(link):
     """
 
     try:
-        status_code = requests.get(link, timeout=3).status_code
+        status_code = requests.get(link, timeout=5).status_code
     except requests.exceptions.SSLError:
-        status_code = requests.get(link, verify=False, timeout=3).status_code
+        status_code = requests.get(link, verify=False, timeout=5).status_code
     except Exception:  # noqa
         # TODO: include exception in logging
         status_code = None
@@ -54,7 +56,11 @@ def main(source):
 
             for link in links:
                 for url in link.urls:
-                    status, code = link_status(url)
+                    # try two time at least
+                    for _ in range(2):
+                        status, code = link_status(url)
+                        if status:
+                            break
 
                     if status:
                         fg = "green"
@@ -62,6 +68,8 @@ def main(source):
                     else:
                         fg = "red"
                         icon = "✗"
+                        EXIT_STATUS = 1
+
                     click.echo(
                         "{icon} L{ln} : {l}".format(
                             icon=click.style(icon, fg=fg, bold=True),
@@ -69,3 +77,5 @@ def main(source):
                             l=click.style(url, fg=fg),
                         )
                     )
+
+    exit(EXIT_STATUS)
