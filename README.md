@@ -28,3 +28,19 @@ This is simple link status checker for text/markdown files.
     ```
 
 ### Usage:
+```bash
+❯❯❯ linkstatus --help
+Usage: linkstatus [OPTIONS] [SOURCE]...
+
+  Check Link Status
+
+Options:
+  -r, --recursive        Include all files from directories recursively
+  -t, --timeout INTEGER  Request timeout (default 4 second)
+  --help                 Show this message and exit.
+```
+
+![linkstatus](https://user-images.githubusercontent.com/11618054/67676030-aafb6400-f9a6-11e9-9d56-c27c21a9e0a8.png)
+
+
+**Note: Skip `link` check for any line by adding `noqa` (no quality assurance) as inline comment.**
