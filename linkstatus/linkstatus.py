@@ -33,7 +33,9 @@ def all_files(source, recursive=False):
     files = []
     for src in source:
         if os.path.isdir(src):
-            files.extend([f for f in glob.glob(src + "**/**", recursive=recursive) if os.path.isfile(f)])
+            files.extend(
+                [f for f in glob.glob(src + "**/**", recursive=recursive) if os.path.isfile(f)]
+            )
         elif os.path.isfile(src):
             files.append(src)
         else:
