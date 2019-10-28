@@ -77,11 +77,20 @@ def main(source, recursive, timeout, retry):
                         exit_code = 1
 
                     click.echo(
-                        "{icon} L{ln} : {url}".format(
+                        "{icon} L{ln} : {url} {code}".format(
                             icon=click.style(icon, fg=fg, bold=True),
                             ln=link.line,
                             url=click.style(url, fg=fg),
+                            code="" if code == 200 else "({})".format(code),
                         )
                     )
-
+    if exit_code == 1:
+        click.echo(
+            click.style(
+                "Note: Use `noqa` inline comment to skip link check. "
+                "eg. response code 403 due to header restrictions etc...",
+                fg="red",
+                bold=True,
+            )
+        )
     exit(exit_code)
