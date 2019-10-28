@@ -23,7 +23,7 @@ def parse_line(string):
         links = re.findall(REGULAR_EXP, html_format)
 
         # TODO: Improve regex to remove this workaround for trailing </p> or </li>
-        links = [l.replace("</p>", "").replace("</li>", "") for l in links]
+        links = [l.replace("</p>", "").replace("</li>", "").replace("</a>", "") for l in links]
         return links
     else:
         return []

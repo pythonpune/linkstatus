@@ -6,8 +6,6 @@ import requests
 
 from linkstatus.parser import parse_file
 
-EXIT_STATUS = 0
-
 
 def link_status(link):
     """Check link status
@@ -46,6 +44,7 @@ def all_files(source):
 @click.command(help="Check Link Status")
 @click.argument("source", nargs=-1, type=click.Path())
 def main(source):
+    exit_code = 0
     files = all_files(source)
 
     for f in files:
@@ -68,7 +67,7 @@ def main(source):
                     else:
                         fg = "red"
                         icon = "✗"
-                        EXIT_STATUS = 1
+                        exit_code = 1
 
                     click.echo(
                         "{icon} L{ln} : {url}".format(
@@ -78,4 +77,4 @@ def main(source):
                         )
                     )
 
-    exit(EXIT_STATUS)
+    exit(exit_code)
