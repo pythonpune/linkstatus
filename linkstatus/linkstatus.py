@@ -7,7 +7,7 @@ import requests
 from linkstatus.parser import parse_file
 
 
-def link_status(link, timeout=5):
+def link_status(link, timeout):
     """Check link status
 
     Args:
@@ -49,7 +49,8 @@ def all_files(source, recursive=False):
     "-r", "--recursive", is_flag=True, help="Include all files from directories recursively"
 )
 @click.option("-t", "--timeout", default=5, help="Request timeout (default 4 second)")
-def main(source, recursive, timeout):
+@click.option("-rt", "--retry", default=2, help="Retry link status (default 2 time)")
+def main(source, recursive, timeout, retry):
     exit_code = 0
     files = all_files(source, recursive=recursive)
 
@@ -62,9 +63,9 @@ def main(source, recursive, timeout):
             for link in links:
                 for url in link.urls:
                     # try two time at least
-                    for _ in range(2):
-                        status, code = link_status(url, timeout)
-                        if status:
+                    for _ in range(int(retry)):
+                        status, code = link_status(url, int(timeout))
+                        if status is True:
                             break
 
                     if status:
