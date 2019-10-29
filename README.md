@@ -41,9 +41,8 @@ Options:
   --help                 Show this message and exit.
 ```
 
-   ![linkstatus](https://user-images.githubusercontent.com/11618054/67754970-5a930d80-fa5d-11e9-851c-afd38147cf28.png)
+![linkstatus](https://user-images.githubusercontent.com/11618054/67764478-0fcec100-fa70-11e9-9c3c-04c1f432f620.png)
 
 
-
-**Note: Skip `link` check for any line by adding `noqa` (no quality assurance) as inline comment
+**Note: Skip link check for any line by adding `noqa` (no quality assurance) as inline comment
 .** like `<-- noqa -->` for `html` and `markdown`, `#noqa` for `python` etc...

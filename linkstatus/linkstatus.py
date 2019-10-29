@@ -1,5 +1,6 @@
 import glob
 import os
+from shutil import get_terminal_size
 
 import click
 import requests
@@ -52,6 +53,10 @@ def all_files(source, recursive=False):
 @click.option("-rt", "--retry", default=2, help="Retry link status (default 2 time)")
 def main(source, recursive, timeout, retry):
     exit_code = 0
+    up_count = 0
+    down_count = 0
+    skip_count = 0
+
     files = all_files(source, recursive=recursive)
 
     for f in files:
@@ -63,6 +68,7 @@ def main(source, recursive, timeout, retry):
             for link in links:
                 for url in link.urls:
                     if link.skip:
+                        skip_count += 1
                         click.echo(
                             "{icon} L{ln} : {url} (skip)".format(
                                 icon=click.style("…", fg="blue", bold=True),
@@ -80,10 +86,12 @@ def main(source, recursive, timeout, retry):
                         if status:
                             fg = "green"
                             icon = "✓"
+                            up_count += 1
                         else:
                             fg = "red"
                             icon = "✗"
                             exit_code = 1
+                            down_count += 1
 
                         click.echo(
                             "{icon} L{ln} : {url} {code}".format(
@@ -94,13 +102,19 @@ def main(source, recursive, timeout, retry):
                             )
                         )
 
+    # Print summary
+    columns = get_terminal_size().columns
+    click.echo("=" * columns)
+    click.echo(click.style("Links Status Summary".center(columns), bold=True))
+    click.echo(click.style("Links UP: {}".format(up_count).center(columns), fg="green"))
+    click.echo(click.style("Links SKIP: {}".format(skip_count).center(columns), fg="blue"))
+    click.echo(click.style("Links DOWN: {}".format(down_count).center(columns), fg="red"))
+
     if exit_code == 1:
         click.echo(
-            click.style(
-                "Warning: Use `noqa` inline comment to skip link check. "
-                "like, response code 403 due to header restrictions etc...",
-                fg="red",
-                bold=True,
-            )
+            "Warning: Use `noqa` inline comment to skip link check. "
+            "like, response code 403 due to header restrictions etc..."
         )
+
+    click.echo("=" * columns)
     exit(exit_code)
