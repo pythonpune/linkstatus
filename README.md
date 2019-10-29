@@ -24,7 +24,7 @@ This is simple link status checker for text/markdown files.
 - source
 
     ```bash
-    python install . --user
+    pip install . --user
     ```
 
 ### Usage:
@@ -37,10 +37,13 @@ Usage: linkstatus [OPTIONS] [SOURCE]...
 Options:
   -r, --recursive        Include all files from directories recursively
   -t, --timeout INTEGER  Request timeout (default 4 second)
+  -rt, --retry INTEGER   Retry link status (default 2 time)
   --help                 Show this message and exit.
 ```
 
-![linkstatus](https://user-images.githubusercontent.com/11618054/67676030-aafb6400-f9a6-11e9-9d56-c27c21a9e0a8.png)
+   ![linkstatus](https://user-images.githubusercontent.com/11618054/67754970-5a930d80-fa5d-11e9-851c-afd38147cf28.png)
 
 
-**Note: Skip `link` check for any line by adding `noqa` (no quality assurance) as inline comment.**
+
+**Note: Skip `link` check for any line by adding `noqa` (no quality assurance) as inline comment
+.** like `<-- noqa -->` for `html` and `markdown`, `#noqa` for `python` etc...

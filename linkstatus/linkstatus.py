@@ -58,37 +58,47 @@ def main(source, recursive, timeout, retry):
         links = parse_file(f)
 
         if links:
-            click.echo(click.style("File: {}".format(f), bg="blue", fg="white"))
+            click.echo(click.style("Links in File: '{}'".format(f), bg="blue", fg="white"))
 
             for link in links:
                 for url in link.urls:
-                    # try two time at least
-                    for _ in range(int(retry)):
-                        status, code = link_status(url, int(timeout))
-                        if status is True:
-                            break
-
-                    if status:
-                        fg = "green"
-                        icon = "✓"
-                    else:
-                        fg = "red"
-                        icon = "✗"
-                        exit_code = 1
-
-                    click.echo(
-                        "{icon} L{ln} : {url} {code}".format(
-                            icon=click.style(icon, fg=fg, bold=True),
-                            ln=link.line,
-                            url=click.style(url, fg=fg),
-                            code="" if code == 200 else "({})".format(code),
+                    if link.skip:
+                        click.echo(
+                            "{icon} L{ln} : {url} (skip)".format(
+                                icon=click.style("…", fg="blue", bold=True),
+                                ln=link.line,
+                                url=click.style(url, fg="blue"),
+                            )
                         )
-                    )
+                    else:
+                        # retry to take status default 2 time
+                        for _ in range(int(retry)):
+                            status, code = link_status(url, int(timeout))
+                            if status is True:
+                                break
+
+                        if status:
+                            fg = "green"
+                            icon = "✓"
+                        else:
+                            fg = "red"
+                            icon = "✗"
+                            exit_code = 1
+
+                        click.echo(
+                            "{icon} L{ln} : {url} {code}".format(
+                                icon=click.style(icon, fg=fg, bold=True),
+                                ln=link.line,
+                                url=click.style(url, fg=fg),
+                                code="" if code == 200 else "({})".format(code),
+                            )
+                        )
+
     if exit_code == 1:
         click.echo(
             click.style(
-                "Note: Use `noqa` inline comment to skip link check. "
-                "eg. response code 403 due to header restrictions etc...",
+                "Warning: Use `noqa` inline comment to skip link check. "
+                "like, response code 403 due to header restrictions etc...",
                 fg="red",
                 bold=True,
             )
