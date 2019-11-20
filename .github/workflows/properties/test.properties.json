@@ -1,0 +1,6 @@
+{
+    "name": "Link Status Testing",
+    "description": "Unit testing for linkstatus.",
+    "iconName": "python",
+    "categories": ["Python"]
+}
