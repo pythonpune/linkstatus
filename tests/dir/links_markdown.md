@@ -9,7 +9,7 @@
 
 [title - https](https://www.google.com "Google's Homepage")
 
-[attribute - https](https://github.com/digitronik/linkstatus)
+[attribute - https](https://github.com/pythonpune/linkstatus)
 
 [reference-style link][Arbitrary case-insensitive reference text]
 
@@ -31,4 +31,4 @@ Some text to show that the reference links can follow later.
 
 [link text itself]: http://www.reddit.com <!--noqa-->
 
-[broken link](https://github.com/digitronic/linkstatus)
+[broken link](https://github.com/pythonpune/linkstatus)

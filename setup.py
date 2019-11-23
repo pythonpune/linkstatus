@@ -33,7 +33,7 @@ setup(
     keywords=["linkstatus", "linkchecker", "link-checker", "markdown", "text", "linklint", "link"],
     name="linkstatus",
     packages=find_packages(include=["linkstatus"]),
-    url="https://github.com/digitronik/linkstatus",
+    url="https://github.com/pythonpune/linkstatus",
     license="GPLv3",
     zip_safe=False,
 )
