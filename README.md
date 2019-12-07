@@ -46,3 +46,7 @@ Options:
 
 **Note: Skip link check for any line by adding `noqa` (no quality assurance) as inline comment
 .** like `<-- noqa -->` for `html` and `markdown`, `#noqa` for `python` etc...
+
+### CONTRIBUTION GUIDELINES
+
+If you would like to contribute please read the project contribution guidelines (here)[CONTRIBUTING.md].
