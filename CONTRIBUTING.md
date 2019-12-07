@@ -12,7 +12,7 @@ linkstatus is an open source project and we love to receive contributions from o
 We appreciate that. But before you do, please learn our basic rules:
 
 - Before posting a support issue please help to check the Readme & also the command help if it answers your question
-- If you idea for a new feature, please consider if it fits into the project goals and it enhances the current features and also see if you can send a  [pull request](https://help.github.com/articles/using-pull-requests).  
+- If you idea for a new feature, please consider if it fits into the project goals and it enhances the current features and also see if you can send a  [pull request](https://help.github.com/articles/using-pull-requests).
 
 ### Suggested Labels For Issues
 
@@ -38,7 +38,7 @@ We appreciate that. But before you do, please learn our basic rules:
     -   ...
 -   **Miscellaneous**  - These are per project and might be useful for further organization but should be kept to a minimum as well.
     -   **good first issue**  - What it says on the tin. This helps new people find stuff to work on, because  [GitHub actively promotes it](https://help.github.com/articles/helping-new-contributors-find-your-project-with-labels/)  and  [initializes new repositories with that label](https://help.github.com/articles/about-labels/#using-default-labels).
-    
+
 # Ground Rules
 
 When contributing to linkstatus, we ask that you:
@@ -46,7 +46,7 @@ When contributing to linkstatus, we ask that you:
 - let us know what you plan in the GitHub Issue tracker so we can provide feedback.
 - provide tests and documentation whenever possible. When fixing a bug, please provide a failing test case that your patch solves.
 - Ensure cross-platform compatibility for every change that's accepted. Windows, Mac, Debian & Ubuntu Linux.
-- open a GitHub Pull Request with your patches and we will review your contribution and respond as quickly as possible. Keep in mind that this is an open source project, and it may take us some time to get back to you. Your patience is very much appreciated.  
+- open a GitHub Pull Request with your patches and we will review your contribution and respond as quickly as possible. Keep in mind that this is an open source project, and it may take us some time to get back to you. Your patience is very much appreciated.
 
 # Setting up the environment
 
