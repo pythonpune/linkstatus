@@ -56,7 +56,7 @@ git clone https://github.com/pythonpune/linkstatus
 cd linkstatus
 virtualenv .venv
 source .venv/bin/activate
-pip install .
+pip install -e .
 linkstatus --help
 ```
 
@@ -72,7 +72,10 @@ linkstatus --help
 *You can start contibuting by checking the open project issues [here](https://github.com/pythonpune/linkstatus/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) .*
 
 At this point, you're ready to make your changes! Feel free to ask for help; everyone is a beginner at first :smile_cat:
+
 If a maintainer asks you to "rebase" your PR, they're saying that a lot of code has changed, and that you need to update your branch so it's easier to merge.
+
+As you submit the pr, please also check for pre-commit checks and fix in case of any errors.
 
 # While Contributing
 
@@ -91,5 +94,4 @@ As a rule of thumb, changes are obvious fixes if they do not introduce any new f
 - Bug fixes that change default return values or error codes stored in constants
 - Adding logging messages or debugging output
 - Changes to ‘metadata’ files like .gitignore, build scripts, etc.
-- Moving source files from one directory or package to another
-
+- Moving source files from one directory or package to another.
