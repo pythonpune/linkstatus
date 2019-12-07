@@ -8,6 +8,8 @@ import requests
 from linkstatus.parser import link_validator
 from linkstatus.parser import parse_file
 
+CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
+
 
 def link_status(link, timeout):
     """Check link status
@@ -45,7 +47,7 @@ def all_files(source, recursive=False):
     return files
 
 
-@click.command(help="Check Link Status")
+@click.command(help="Check Link Status", context_settings=CONTEXT_SETTINGS)
 @click.argument("source", nargs=-1, type=click.Path())
 @click.option(
     "-r", "--recursive", is_flag=True, help="Include all files from directories recursively"
