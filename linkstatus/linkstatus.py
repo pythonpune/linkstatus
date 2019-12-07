@@ -5,6 +5,7 @@ from shutil import get_terminal_size
 import click
 import requests
 
+from linkstatus.parser import link_validator
 from linkstatus.parser import parse_file
 
 
@@ -61,7 +62,7 @@ def main(source, recursive, timeout, retry):
 
     for f in files:
         links = parse_file(f)
-
+        links = link_validator(links)
         if links:
             click.echo(click.style("Links in File: '{}'".format(f), bg="blue", fg="white"))
 

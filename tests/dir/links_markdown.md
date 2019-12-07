@@ -32,3 +32,11 @@ Some text to show that the reference links can follow later.
 [link text itself]: http://www.reddit.com <!--noqa-->
 
 [broken link](https://github.com/pythonpune/linkstatus)
+
+https://github.com//pythonpune/
+
+http://<hostname>:<port>
+
+https://<hostname>:<port>/pages
+
+file:///etc/hosts
