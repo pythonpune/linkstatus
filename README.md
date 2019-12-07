@@ -49,4 +49,8 @@ Options:
 
 ### CONTRIBUTION GUIDELINES
 
-If you would like to contribute please read the project contribution guidelines (here)[CONTRIBUTING.md].
+If you would like to contribute please read the project contribution guidelines [here](CONTRIBUTING.md).
+
+### CODE OF CONDUCT
+
+For the community code of conduct please follow the following [link](https://github.com/pythonpune/meetup-talks/blob/master/CODE_OF_CONDUCT.md).
