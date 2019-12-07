@@ -48,6 +48,17 @@ When contributing to linkstatus, we ask that you:
 - Ensure cross-platform compatibility for every change that's accepted. Windows, Mac, Debian & Ubuntu Linux.
 - open a GitHub Pull Request with your patches and we will review your contribution and respond as quickly as possible. Keep in mind that this is an open source project, and it may take us some time to get back to you. Your patience is very much appreciated.  
 
+# Setting up the environment
+
+Below is the steps for setting up a development environment
+```
+git clone https://github.com/pythonpune/linkstatus
+cd linkstatus
+virtualenv .venv
+source .venv/bin/activate
+pip install .
+linkstatus --help
+```
 
 # Your First Contribution
 
