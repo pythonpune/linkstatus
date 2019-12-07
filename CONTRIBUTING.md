@@ -19,7 +19,7 @@ We appreciate that. But before you do, please learn our basic rules:
 -   **Issue Types**
     -   **Bug**  - Anything that is broken
     -   **Regression**  - A bug that did not exist in previous versions and isn't a new feature (applied in tandem with Bug)
-    -   **Feature**  - Anything that involves API changes, should generally only be for PRs or bug reports on in-progress features.
+    -   **Feature/Enhancement**  - Anything that involves API changes, should generally only be for PRs or bug reports on in-progress features.
     -   **Performance**  - A performance related issue. We could track this as a bug, but usually these would have slightly lower priority than standard bugs.
     -   **Cleanup**  - Not a bug, not a feature, just code cleanup.
     -   **Documentation**  - Self-explanatory.
@@ -68,6 +68,8 @@ linkstatus --help
 -  Both issue lists are sorted by total number of comments. While not perfect, number of comments is a reasonable proxy for impact a given change will have.
 
 >*Working on your first Pull Request? You can learn how from this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+
+*You can start contibuting by checking the open project issues [here](https://github.com/pythonpune/linkstatus/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) .*
 
 At this point, you're ready to make your changes! Feel free to ask for help; everyone is a beginner at first :smile_cat:
 If a maintainer asks you to "rebase" your PR, they're saying that a lot of code has changed, and that you need to update your branch so it's easier to merge.
