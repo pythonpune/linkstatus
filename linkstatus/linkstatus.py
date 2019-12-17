@@ -34,6 +34,14 @@ def link_status(link, timeout):
 
 
 def all_files(source, recursive=False):
+    """Collect all provide file paths
+    Args:
+        source: file or directory name
+        recursive: search recursively directories
+
+    Returns:
+        list of files path
+    """
     files = []
     for src in source:
         if os.path.isdir(src):

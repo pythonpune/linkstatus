@@ -1,4 +1,6 @@
-Links:
+Example text file:
+
+Note: Line number and status of link mapped in `tests/data/data.yaml` for testing.
 
 1. linkstatus: https://github.com/pythonpune/linkstatus
 2. google: http://www.google.com
