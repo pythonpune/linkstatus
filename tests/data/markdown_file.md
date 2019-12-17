@@ -1,5 +1,5 @@
-# Markdown sample file
-
+# Markdown sample  test file
+### Line number and status of link mapped in `tests/data/data.yaml` for testing.
 ## Links:
 [source](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
 
@@ -25,13 +25,16 @@ http://www.example.com.
 
 Some text to show that the reference links can follow later.
 
-[arbitrary case-insensitive reference text]: https://www.mozilla.org <!--noqa-->
+[arbitrary case-insensitive reference text]: https://www.mozilla.org
 
-[1]: http://slashdot.org <!--noqa-->
+[1]: http://slashdot.org
 
-[link text itself]: http://www.reddit.com <!--noqa-->
+[link text itself]: http://www.example.com
 
-[broken link](https://github.com/pythonpune/linkstatus)
+[broken link](https://github.com/pythonpune/linkcheck)
+
+
+## Other link examples
 
 https://github.com//pythonpune/
 

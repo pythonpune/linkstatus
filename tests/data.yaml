@@ -1,0 +1,63 @@
+# Mapping of dir and files as per links and status.
+
+# Dirs and files with status
+data:
+  parent:
+  files:
+    text_file:
+      'https://github.com/pythonpune/linkstatus':
+        status: True
+        line: 'L5'
+      'http://www.google.com':
+        status: True,
+        line: 'L6'
+      'https://example.com':
+        status: True,
+        line: 'L7'
+      'https://github.com/xyz_foo':
+        status: False
+        line: 'L8'
+    markdown_file.md:
+      'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet':
+        status: True
+        line: 'L4'
+      'http://www.google.com':
+        status: True
+        line: 'L8'
+      'https://www.google.com':
+        status: True
+        line: 'L10'
+      'https://github.com/pythonpune/linkstatus':
+        status: True
+        line: 'L12'
+      'http://www.example.com':
+        status: True
+        line: 'L24'
+      'https://github.com/pythonpune/linkcheck':
+        status: False
+        line: 'L34'
+      'https://github.com//pythonpune/':
+        status: True
+        line: 'L39'
+      'http://<hostname>:<port>':
+        status: False
+        line: 'L41'
+      'https://<hostname>:<port>/pages':
+        status: False
+        line: 'L43'
+recursive:
+  parent: "data"
+  files:
+    recursive_text_file.txt:
+      'https://github.com/pythonpune/linkstatus':
+        status: True
+        line: 'L5'
+      'http://www.google.com':
+        status: True,
+        line: 'L6'
+      'https://example.com':
+        status: True,
+        line: 'L7'
+      'https://github.com/xyz_foo':
+        status: False
+        line: 'L8'
