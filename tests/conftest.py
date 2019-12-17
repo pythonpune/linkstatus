@@ -1,6 +1,7 @@
-from ruamel.yaml import safe_load
-import pytest
 import os
+
+import pytest
+from ruamel.yaml import safe_load
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -20,16 +21,16 @@ def sources(request):
         "file": [os.path.join(BASE_DIR, "data", "text_file")],
         "files": [
             os.path.join(BASE_DIR, "data", "text_file"),
-            os.path.join(BASE_DIR, "data", "recursive", "recursive_text_file.txt")
+            os.path.join(BASE_DIR, "data", "recursive", "recursive_text_file.txt"),
         ],
         "directory": [os.path.join(BASE_DIR, "data")],
         "directories": [
             os.path.join(BASE_DIR, "data"),
-            os.path.join(BASE_DIR, "data", "recursive")
+            os.path.join(BASE_DIR, "data", "recursive"),
         ],
         "file-directory": [
             os.path.join(BASE_DIR, "data", "text_file"),
-            os.path.join(BASE_DIR, "data")
-        ]
+            os.path.join(BASE_DIR, "data"),
+        ],
     }
     return SOURCES_TYPE[request.param]

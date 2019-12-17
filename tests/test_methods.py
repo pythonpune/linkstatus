@@ -1,5 +1,6 @@
-import pytest
 import os
+
+import pytest
 
 from linkstatus.linkstatus import all_files
 
@@ -18,8 +19,11 @@ def test_all_files(sources, recursive):
 
             if recursive:
                 for d in [d for d in inside_entities if os.path.isdir(d) and "__" not in d]:
-                    files = [os.path.join(d, f) for f in os.listdir(d) if os.path.isfile(
-                        os.path.join(d, f))]
+                    files = [
+                        os.path.join(d, f)
+                        for f in os.listdir(d)
+                        if os.path.isfile(os.path.join(d, f))
+                    ]
                     inside_files.extend(files)
             expected_files.extend(inside_files)
 

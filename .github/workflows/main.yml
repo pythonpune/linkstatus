@@ -28,6 +28,11 @@ jobs:
         if: failure()
         run: git diff
 
+      - name: Unit Tests
+        run: |
+          python -m pip install pytest
+          py.test tests -v
+
       - name: Build Package
         if: matrix.python-version == '3.7' && github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
         run: |
