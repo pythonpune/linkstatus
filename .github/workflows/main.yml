@@ -3,17 +3,41 @@ name: Link Status
 on: [push, pull_request]
 
 jobs:
-  build:
-    runs-on: ubuntu-16.04
-    strategy:
-      matrix:
-        python-version: [ '3.6', '3.7' ]
-    name: Python ${{ matrix.python-version }}
+  pre-commit:
+    name: Pre-Commit Checks
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout to master
         uses: actions/checkout@master
 
       - name: Setup python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
+
+      - name: Pre-Commit Checks
+        run: |
+            python -m pip install pre-commit
+            pre-commit run -a
+
+      - name: Analysis (git diff)
+        if: failure()
+        run: git diff
+
+  tests:
+    name: Test-${{ matrix.os }}-Py${{ matrix.python-version }}
+    needs: pre-commit
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: [ '3.6', '3.7' ]
+    steps:
+      - name: Checkout to master
+        uses: actions/checkout@master
+
+      - name: Setup Python-${{ matrix.python-version }}
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
@@ -24,25 +48,5 @@ jobs:
           python -m pip install .
           python -m pip install -Ur dev-requirements.txt
 
-      - name: Pre-Commit
-        run: pre-commit run -a
-
-      - name: Analysis (git diff)
-        if: failure()
-        run: git diff
-
       - name: Unit Tests
         run: py.test tests -v
-
-      - name: Build Package
-        if: matrix.python-version == '3.7' && github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-        run: |
-          python -m pip install --upgrade setuptools wheel
-          python setup.py sdist bdist_wheel
-
-      - name: Deploy to PyPi
-        if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-        uses: pypa/gh-action-pypi-publish@master
-        with:
-          user: __token__
-          password: ${{ secrets.pypi_linkstatus }}
