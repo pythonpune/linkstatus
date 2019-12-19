@@ -9,10 +9,10 @@ data:
         status: True
         line: 'L5'
       'http://www.google.com':
-        status: True,
+        status: True
         line: 'L6'
       'https://example.com':
-        status: True,
+        status: True
         line: 'L7'
       'https://github.com/xyz_foo':
         status: False
@@ -53,10 +53,10 @@ recursive:
         status: True
         line: 'L5'
       'http://www.google.com':
-        status: True,
+        status: True
         line: 'L6'
       'https://example.com':
-        status: True,
+        status: True
         line: 'L7'
       'https://github.com/xyz_foo':
         status: False

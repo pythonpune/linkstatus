@@ -11,7 +11,7 @@ from linkstatus.parser import parse_file
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 
 
-def link_status(link, timeout):
+def link_status(link, timeout=5):
     """Check link status
 
     Args:

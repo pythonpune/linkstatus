@@ -21,7 +21,7 @@
 Or leave it empty and use the [link text itself].
 
 URLs and URLs in angle brackets will automatically get turned into links.
-http://www.example.com.
+http://www.example.com
 
 Some text to show that the reference links can follow later.
 
