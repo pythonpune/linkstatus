@@ -7,9 +7,7 @@ module = "linkstatus"
 author = "Nikhil Dhandre"
 author-email = "nik.digitronik@live.com"
 home-page = "https://github.com/pythonpune/linkstatus"
-requires=["click",
-          "markdown",
-          "requests"]
+requires=["click", "markdown", "requests"]
 requires-python=">=3.5"
 description-file="README.md"
 keywords="linkstatus,linkchecker,link-checker,markdown,text,linklint,link"
