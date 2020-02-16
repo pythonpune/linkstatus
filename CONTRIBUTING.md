@@ -51,15 +51,21 @@ When contributing to linkstatus, we ask that you:
 # Setting up the environment
 
 Below is the steps for setting up a development environment
-```
+```shell
 git clone https://github.com/pythonpune/linkstatus
 cd linkstatus
 virtualenv .venv
 source .venv/bin/activate
-pip install -e .
+python -m pip install -Ur dev-requirements.txt
+python -m pip install -e .
 linkstatus --help
 ```
 
+# Run unit test with nox
+```shell
+nox -s pre_commit   # pre-commit checks
+nox -s tests        # unit tests
+```
 # Your First Contribution
 
 - Unsure where to begin contributing? You can start by looking through these beginner and help-wanted issues:

@@ -1,23 +1,23 @@
 repos:
 - repo: https://github.com/asottile/reorder_python_imports
-  rev: v1.6.1
+  rev: v1.9.0
   hooks:
   - id: reorder-python-imports
     language_version: python3
 - repo: https://github.com/psf/black
-  rev: 19.3b0
+  rev: 19.10b0
   hooks:
   - id: black
     args: [--safe, --quiet, --line-length, "100"]
     language_version: python3
     require_serial: true
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v2.2.3
+  rev: v2.5.0
   hooks:
   -   id: flake8
       verbose: true
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v2.3.0
+  rev: v2.5.0
   hooks:
   - id: trailing-whitespace
     language_version: python3
@@ -28,7 +28,7 @@ repos:
   - id: flake8
     language_version: python3
 - repo: https://github.com/asottile/pyupgrade
-  rev: v1.22.1
+  rev: v1.26.2
   hooks:
   - id: pyupgrade
     language_version: python3
