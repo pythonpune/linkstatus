@@ -43,10 +43,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
 
-      - name: Setup Package and Install Devel Dependancies
+      - name: Setup Package and Install Devel Dependencies
         run: |
           python -m pip install -Ur dev-requirements.txt
           python -m pip install .
 
       - name: Unit Tests
-        run: py.test tests -sqvv
+        run: py.test -v tests

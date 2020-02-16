@@ -63,8 +63,9 @@ linkstatus --help
 
 # Run unit test with nox
 ```shell
-nox -s pre_commit   # pre-commit checks
-nox -s tests        # unit tests
+nox --list          # list all available sessions
+nox -s pre_commit   # run pre-commit checks
+nox -s tests        # run unit tests
 ```
 # Your First Contribution
 
