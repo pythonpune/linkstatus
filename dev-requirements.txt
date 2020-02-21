@@ -1,3 +1,4 @@
+nox
 pre-commit
 pytest
 ruamel.yaml

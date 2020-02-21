@@ -39,9 +39,27 @@ Options:
   -t, --timeout INTEGER  Request timeout (default 4 second)
   -rt, --retry INTEGER   Retry link status (default 2 time)
   --help                 Show this message and exit.
-```
 
-![linkstatus](https://user-images.githubusercontent.com/11618054/67764478-0fcec100-fa70-11e9-9c3c-04c1f432f620.png)
+
+❯❯❯ linkstatus tests/data/markdown_file.md
+Links in File: 'tests/data/markdown_file.md'
+✓ L4 : https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+✓ L8 : http://www.google.com
+✓ L10 : https://www.google.com
+✓ L12 : https://github.com/pythonpune/linkstatus
+✓ L24 : http://www.example.com
+✗ L34 : https://github.com/pythonpune/linkcheck (404)
+✓ L39 : https://github.com//pythonpune/
+… L41 : http://<hostname>:<port> (skip)
+… L43 : https://<hostname>:<port>/pages (skip)
+=================================================================================================================
+                                                               Links Status Summary
+                                                                   Links UP: 6
+                                                                  Links SKIP: 2
+                                                                  Links DOWN: 1
+Warning: Use `noqa` inline comment to skip link check. like, response code 403 due to header restrictions etc...
+=================================================================================================================
+```
 
 
 **Note: Skip link check for any line by adding `noqa` (no quality assurance) as inline comment

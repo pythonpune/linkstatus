@@ -2,7 +2,12 @@ import nox
 
 
 @nox.session
-def run_tests(session):
-    session.install("-r", "dev-requirements.txt")
-    session.install("-e", ".")
-    session.run("pytest", "tests")
+def pre_commit(session):
+    session.install("pre-commit")
+    session.run("pre-commit", "run", "-a")
+
+
+@nox.session(python=["3.6", "3.7"])
+def tests(session):
+    session.install("pytest", "ruamel.yaml", ".")
+    session.run("pytest", "-sqvv", "tests")
