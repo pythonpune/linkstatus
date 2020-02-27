@@ -68,7 +68,12 @@ def main(source, recursive, timeout, retry):
     down_count = 0
     skip_count = 0
 
-    files = all_files(source, recursive=recursive)
+    if source:
+        files = all_files(source, recursive=recursive)
+    else:
+        click.echo("Source Not Found")
+        click.echo("Run 'linkstatus --help' for more information.")
+        exit(1)
 
     for f in files:
         links = parse_file(f)
@@ -114,18 +119,22 @@ def main(source, recursive, timeout, retry):
                         )
 
     # Print summary
-    columns = get_terminal_size().columns
-    click.echo("=" * columns)
-    click.echo(click.style("Links Status Summary".center(columns), bold=True))
-    click.echo(click.style("Links UP: {}".format(up_count).center(columns), fg="green"))
-    click.echo(click.style("Links SKIP: {}".format(skip_count).center(columns), fg="blue"))
-    click.echo(click.style("Links DOWN: {}".format(down_count).center(columns), fg="red"))
+    total_links = up_count + skip_count + down_count
 
-    if exit_code == 1:
-        click.echo(
-            "Warning: Use `noqa` inline comment to skip link check. "
-            "like, response code 403 due to header restrictions etc..."
-        )
+    if total_links:
+        columns = get_terminal_size().columns
+        click.echo("=" * columns)
+        click.echo(click.style("Links Status Summary".center(columns), bold=True))
+        click.echo(click.style("Links UP: {}".format(up_count).center(columns), fg="green"))
+        click.echo(click.style("Links SKIP: {}".format(skip_count).center(columns), fg="blue"))
+        click.echo(click.style("Links DOWN: {}".format(down_count).center(columns), fg="red"))
 
-    click.echo("=" * columns)
+        if exit_code == 1:
+            click.echo(
+                "Warning: Use `noqa` inline comment to skip link check. "
+                "like, response code 403 due to header restrictions etc..."
+            )
+        click.echo("=" * columns)
+    else:
+        click.echo("No link found")
     exit(exit_code)
