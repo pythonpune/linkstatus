@@ -20,11 +20,11 @@ def link_status(link, timeout=5):
     Returns:
         tuple of status (bool) and status code
     """
-
+    headers = {"User-Agent": "linkstatus/0.8"}
     try:
-        status_code = requests.get(link, timeout=timeout).status_code
+        status_code = requests.get(link, headers=headers, timeout=timeout).status_code
     except requests.exceptions.SSLError:
-        status_code = requests.get(link, verify=False, timeout=timeout).status_code
+        status_code = requests.get(link, verify=False, headers=headers, timeout=timeout).status_code
     except Exception:  # noqa
         # TODO: include exception in logging
         status_code = None
