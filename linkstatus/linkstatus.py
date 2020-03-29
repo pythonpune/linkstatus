@@ -3,6 +3,7 @@ import os
 from shutil import get_terminal_size
 
 import click
+import pkg_resources
 import requests
 
 from linkstatus.parser import link_validator
@@ -20,7 +21,9 @@ def link_status(link, timeout=5):
     Returns:
         tuple of status (bool) and status code
     """
-    headers = {"User-Agent": "linkstatus/0.8"}
+    headers = {
+        "User-Agent": "linkstatus/{}".format(pkg_resources.get_distribution("linkstatus").version)
+    }
     try:
         status_code = requests.get(link, headers=headers, timeout=timeout).status_code
     except requests.exceptions.SSLError:
