@@ -54,15 +54,15 @@ Below is the steps for setting up a development environment
 ```shell
 git clone https://github.com/pythonpune/linkstatus
 cd linkstatus
-virtualenv .venv
+python -m venv .venv
 source .venv/bin/activate
-python -m pip install -Ur dev-requirements.txt
 python -m pip install -e .
 linkstatus --help
 ```
 
 # Run unit test with nox
 ```shell
+python -m pip install nox
 nox --list          # list all available sessions
 nox -s pre_commit   # run pre-commit checks
 nox -s tests        # run unit tests

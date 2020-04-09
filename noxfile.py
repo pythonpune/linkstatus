@@ -10,7 +10,7 @@ def pre_commit(session):
     session.run("pre-commit", "run", "-a")
 
 
-@nox.session(python=["3.6", "3.7", "3.8"])
+@nox.session(python=["pypy3", "3.6", "3.7", "3.8"])
 def tests(session):
     """Run unit test over different python env with code coverage"""
     session.install("pytest", "pytest-cov", "ruamel.yaml", "-e", ".")
