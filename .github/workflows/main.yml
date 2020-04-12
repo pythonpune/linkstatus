@@ -1,4 +1,4 @@
-name: Link Status
+name: Tests
 
 on: [push, pull_request]
 
@@ -6,6 +6,7 @@ jobs:
   pre-commit:
     name: Pre-Commit Checks
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout to master
         uses: actions/checkout@master
@@ -13,26 +14,46 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v1
         with:
-          python-version: '3.7'
+          python-version: '3.8'
           architecture: 'x64'
 
       - name: Pre-Commit Checks
         run: |
-            python -m pip install pre-commit
-            pre-commit run -a
+          python -m pip install pip --upgrade
+          pip install nox
+          nox -s pre_commit
 
       - name: Analysis (git diff)
         if: failure()
         run: git diff
 
-  tests:
-    name: Test-${{ matrix.os }}-Py${{ matrix.python-version }}
+  package:
+    name: Build & Verify Package
     needs: pre-commit
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to master
+        uses: actions/checkout@master
+
+      - name: Setup python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+      - name: Build and check with twine
+        run: |
+          python -m pip install pip --upgrade
+          pip install nox
+          nox -s package
+
+  unit-tests:
+    name: UnitTests-Python-${{ matrix.python-version }}
+    needs: [ pre-commit, package ]
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [ '3.6', '3.7' ]
+        python-version: [ 'pypy3', '3.6', '3.7', '3.8' ]
     steps:
       - name: Checkout to master
         uses: actions/checkout@master
@@ -43,10 +64,39 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
 
-      - name: Setup Package and Install Devel Dependencies
-        run: |
-          python -m pip install -Ur dev-requirements.txt
-          python -m pip install .
-
       - name: Unit Tests
-        run: py.test -v tests
+        run: |
+          python -m pip install pip --upgrade
+          pip install nox
+          nox -s ci_tests
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1.0.6
+        with:
+          file: coverage.xml
+          flags: unittests
+          name: codecov-linkstatus-{{ matrix.python-version }}
+          fail_ci_if_error: true
+
+  platform:
+    name: Platform-${{ matrix.os }}
+    needs: [ unit-tests]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - name: Checkout to master
+        uses: actions/checkout@master
+
+      - name: Setup python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+
+      - name: Development setup and smoke test on platform ${{ matrix.os }}
+        run: |
+          python -m pip install pip --upgrade
+          pip install nox
+          nox -s dev_setup
