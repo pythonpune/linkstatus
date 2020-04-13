@@ -6,6 +6,7 @@
     <a href="https://pypi.org/project/linkstatus/#history"><img alt="PyPI version" src="https://badge.fury.io/py/linkstatus.svg"></a>
     <a href="https://pepy.tech/project/linkstatus"><img alt="Downloads" src="https://pepy.tech/badge/linkstatus"></a>
     <a href="https://codecov.io/gh/pythonpune/linkstatus"><img src="https://codecov.io/gh/pythonpune/linkstatus/branch/master/graph/badge.svg"></a>
+    <a href="https://github.com/pythonpune/linkstatus/actions"><img alt="github actions" src="https://github.com/pythonpune/linkstatus/workflows/Tests/badge.svg?branch=master"></a>
     <a href="https://github.com/pythonpune/linkstatus/blob/master/LICENSE"><img alt="License: GPLv3" src="https://img.shields.io/pypi/l/linkstatus.svg?version=latest"></a>
     <a href="https://pypi.org/project/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
