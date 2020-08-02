@@ -6,7 +6,6 @@ import click
 import pkg_resources
 import requests
 
-from linkstatus.parser import link_validator
 from linkstatus.parser import parse_file
 
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
@@ -28,12 +27,13 @@ def link_status(link, timeout=5):
         status_code = requests.get(link, headers=headers, timeout=timeout).status_code
     except requests.exceptions.SSLError:
         status_code = requests.get(link, verify=False, headers=headers, timeout=timeout).status_code
+    except requests.exceptions.MissingSchema:
+        status_code = "Schema missing try with http/https"
     except Exception:  # noqa
         # TODO: include exception in logging
         status_code = None
-        pass
 
-    return status_code == 200, status_code
+    return status_code == requests.codes.ok, status_code
 
 
 def all_files(source, recursive=False):
@@ -80,7 +80,6 @@ def main(source, recursive, timeout, retry):
 
     for f in files:
         links = parse_file(f)
-        links = link_validator(links)
         if links:
             click.echo(click.style("Links in File: '{}'".format(f), bg="blue", fg="white"))
 

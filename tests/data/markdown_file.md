@@ -29,7 +29,7 @@ Some text to show that the reference links can follow later.
 
 [1]: http://slashdot.org
 
-[link text itself]: http://www.example.com
+[link text itself]: http://www.foo.com
 
 [broken link](https://github.com/pythonpune/linkcheck)
 
@@ -38,8 +38,6 @@ Some text to show that the reference links can follow later.
 
 https://github.com//pythonpune/
 
-http://<hostname>:<port>
+http://localhost:8080
 
-https://<hostname>:<port>/pages
-
-file:///etc/hosts
+https://localhost:8080/foo
