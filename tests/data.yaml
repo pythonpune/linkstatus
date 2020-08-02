@@ -18,9 +18,12 @@ data:
         status: False
         line: 'L8'
     markdown_file.md:
-      'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet':
+      'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links':
         status: True
         line: 'L4'
+      'www.google.com':
+        status: False
+        line: 'L6'
       'http://www.google.com':
         status: True
         line: 'L8'
@@ -33,16 +36,25 @@ data:
       'http://www.example.com':
         status: True
         line: 'L24'
+      'https://www.mozilla.org':
+        status: True
+        line: 'L28'
+      'http://slashdot.org':
+        status: True
+        line: 'L30'
+      'http://www.foo.com':
+        status: True
+        line: 'L32'
       'https://github.com/pythonpune/linkcheck':
         status: False
         line: 'L34'
       'https://github.com//pythonpune/':
         status: True
         line: 'L39'
-      'http://<hostname>:<port>':
+      'http://localhost:8080':
         status: False
         line: 'L41'
-      'https://<hostname>:<port>/pages':
+      'https://localhost:8080/foo':
         status: False
         line: 'L43'
 recursive:
