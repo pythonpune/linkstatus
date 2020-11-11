@@ -1,0 +1,27 @@
+[build-system]
+requires = ["flit_core >=2,<3"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "linkstatus"
+author = "Nikhil Dhandre"
+author-email = "nik.digitronik@live.com"
+home-page = "https://github.com/pythonpune/linkstatus"
+requires=["click", "markdown", "requests"]
+requires-python=">=3.5"
+description-file="README.md"
+keywords="linkstatus,linkchecker,link-checker,markdown,text,linklint,link"
+
+classifiers=[
+        "Natural Language :: English",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Intended Audience :: End Users/Desktop",
+        "Intended Audience :: Developers",
+        "Environment :: Console",
+    ]
+
+
+[tool.flit.scripts]
+linkstatus = "linkstatus:main"
